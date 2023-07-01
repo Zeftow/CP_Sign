@@ -124,9 +124,20 @@ void setup() {
   digitalWrite(19, HIGH);
 }
 
+//            1           1           1           1           1           1           1           1           1           1           1           1           1           1           1           1
+int come[] = {0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1};
+int play[] = {1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1};
+int step = 0;
 
 void loop()
 {
+  if(step >= 60){
+    step = 0;
+  }
+  digitalWrite(18, come[step]);
+  digitalWrite(19, play[step]);
+  EVERY_N_MILLISECONDS( 500 ) { step++; }
+
   // Call the current pattern function once, updating the 'leds' array
   gPatterns[gCurrentPatternNumber]();
 
