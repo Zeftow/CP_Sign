@@ -125,7 +125,6 @@ void setup() {
 }
 
 
-
 void loop()
 {
   // Call the current pattern function once, updating the 'leds' array
